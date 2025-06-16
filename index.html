@@ -1,19 +1,168 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>회원가입</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .signup-form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #4a90e2;
+            box-shadow: 0 0 8px rgba(74, 144, 226, 0.5);
+            outline: none;
+        }
+
+        label {
+            position: absolute;
+            top: 12px;
+            left: 16px;
+            font-size: 16px;
+            color: #aaa;
+            transition: 0.2s ease;
+            pointer-events: none;
+        }
+
+        input:focus + label,
+        input:not(:placeholder-shown) + label {
+            top: -8px;
+            left: 16px;
+            font-size: 12px;
+            color: #4a90e2;
+        }
+
+        .error {
+            border-color: #e74c3c;
+            box-shadow: 0 0 8px rgba(231, 76, 60, 0.5);
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .btn {
+            background-color: #4a90e2;
+            color: white;
+            padding: 14px;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #357ab7;
+        }
+
+        .info {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .info a {
+            color: #4a90e2;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <section>
-        <h1>테스트 중</h1>
-        <body style="background-color: aqua;">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam facilis
-            velit cum eius officia aliquid tempora, cupiditate vero quae deserunt repellendus! 
-            Culpa reprehenderit rerum, accusamus accusantium libero nostrum quis tenetur!
-        </body>
-    </section>
-    
+
+    <div class="signup-form">
+        <h1>로이떼와 함께, 더 나은 시작을!</h1>
+        <form action="#" method="POST" id="signupForm">
+            <!-- 이메일 필드 -->
+            <div class="form-group">
+                <input type="email" id="email" name="email" required placeholder=" " />
+                <label for="email">이메일 주소</label>
+            </div>
+            
+            <!-- 비밀번호 필드 -->
+            <div class="form-group">
+                <input type="password" id="password" name="password" required placeholder=" " />
+                <label for="password">비밀번호</label>
+            </div>
+
+            <!-- 비밀번호 확인 필드 -->
+            <div class="form-group">
+                <input type="password" id="confirmPassword" name="confirmPassword" required placeholder=" " />
+                <label for="confirmPassword">비밀번호 확인</label>
+            </div>
+
+            <!-- 가입 버튼 -->
+            <button type="submit" class="btn">회원가입</button>
+        </form>
+
+        <div class="info">
+            <p>이미 회원이신가요? <a href="#">로그인</a></p>
+        </div>
+    </div>
+
+    <script>
+        // 폼 제출 이벤트
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // 기본 폼 제출 막기
+
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            // 비밀번호 확인
+            if (password !== confirmPassword) {
+                document.getElementById('confirmPassword').classList.add('error');
+                alert("비밀번호가 일치하지 않습니다.");
+            } else {
+                // 모든 것이 정상적인 경우
+                alert("회원가입이 완료되었습니다!");
+            }
+        });
+    </script>
+
 </body>
 </html>
